@@ -1,0 +1,93 @@
+/* ============================================
+   FOOTER
+   ============================================ */
+.footer {
+  background: var(--bg-secondary);
+  position: relative;
+  padding: 0;
+}
+
+.footer__line {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
+}
+
+.footer__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding-top: 28px;
+  padding-bottom: 28px;
+}
+
+/* ---- Brand ---- */
+.footer__brand {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.footer__brand-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-bright);
+}
+
+/* ---- Copy ---- */
+.footer__copy {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+
+/* ---- Back to top ---- */
+.footer__top-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 30px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: all 0.3s var(--ease);
+}
+
+.footer__top-btn svg {
+  transition: transform 0.3s var(--ease-spring);
+}
+
+.footer__top-btn:hover {
+  color: var(--accent-bright);
+  border-color: var(--border-hover);
+  background: var(--accent-subtle);
+  transform: translateY(-2px);
+}
+
+.footer__top-btn:hover svg {
+  transform: translateY(-3px);
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 560px) {
+  .footer__inner {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 14px;
+  }
+}

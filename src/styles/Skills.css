@@ -1,0 +1,228 @@
+/* ============================================
+   SKILLS SECTION
+   ============================================ */
+.skills {
+  padding: var(--section-pad);
+  background: var(--bg-secondary);
+  position: relative;
+  overflow: hidden;
+}
+
+.skills::before,
+.skills::after {
+  content: '';
+  position: absolute;
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+  filter: blur(100px);
+  pointer-events: none;
+}
+
+.skills::before {
+  background: rgba(124, 58, 237, 0.1);
+  top: -80px;
+  right: -80px;
+}
+
+.skills::after {
+  background: rgba(99, 102, 241, 0.08);
+  bottom: -80px;
+  left: -80px;
+}
+
+/* ---- Header ---- */
+.skills__header {
+  margin-bottom: 32px;
+}
+
+/* ============================================
+   FILTER TABS
+   ============================================ */
+.skills__filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 44px;
+  position: relative;
+  z-index: 1;
+}
+
+.skills__filter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 8px 18px;
+  border-radius: 30px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: color 0.25s ease, background 0.25s ease,
+              border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.skills__filter-btn:hover {
+  border-color: var(--border-hover);
+  color: var(--text-primary);
+  background: var(--accent-subtle);
+}
+
+.skills__filter-btn--active {
+  background: linear-gradient(135deg, var(--accent), var(--accent-bright));
+  border-color: transparent;
+  color: #fff;
+  box-shadow: 0 4px 18px rgba(124, 58, 237, 0.35);
+}
+
+/* Count badge inside button */
+.skills__filter-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 5px;
+  border-radius: 20px;
+  font-size: 0.65rem;
+  font-weight: 800;
+  line-height: 1;
+  background: rgba(255, 255, 255, 0.12);
+  color: inherit;
+  transition: background 0.25s ease;
+}
+
+.skills__filter-btn--active .skills__filter-count {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+/* ============================================
+   SKILL GRID
+   ============================================ */
+.skills__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 16px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================
+   SKILL CARD ENTER ANIMATION
+   NOTE: cubic-bezier written out directly —
+   CSS custom properties cannot be used as
+   animation timing functions in any browser.
+   ============================================ */
+@keyframes skillCardIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ============================================
+   SKILL CARD
+   ============================================ */
+.skill-card {
+  position: relative;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px 16px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  cursor: default;
+  overflow: hidden;
+
+  /* Literal cubic-bezier — NOT var() — fixes the browser error */
+  animation: skillCardIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+
+  transition:
+    transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.skill-card:hover {
+  transform: translateY(-8px) scale(1.03);
+  border-color: var(--border-hover);
+  box-shadow: 0 12px 36px rgba(124, 58, 237, 0.2);
+}
+
+/* ---- Icon ---- */
+.skill-card__icon {
+  font-size: 2rem;
+  line-height: 1;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.skill-card:hover .skill-card__icon {
+  transform: scale(1.2) rotate(-5deg);
+}
+
+/* ---- Name ---- */
+.skill-card__name {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-align: center;
+}
+
+/* ---- Category pill ---- */
+.skill-card__cat {
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent-bright);
+  background: var(--accent-subtle);
+  padding: 2px 8px;
+  border-radius: 30px;
+}
+
+/* ---- Hover glow ---- */
+.skill-card__glow {
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 40px;
+  background: var(--accent);
+  filter: blur(24px);
+  opacity: 0;
+  border-radius: 50%;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+
+.skill-card:hover .skill-card__glow {
+  opacity: 0.35;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 480px) {
+  .skills__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .skill-card {
+    padding: 18px 10px 14px;
+  }
+
+  .skills__filter-btn {
+    font-size: 0.7rem;
+    padding: 7px 14px;
+  }
+}
