@@ -187,6 +187,7 @@
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
+
 }
 
 .pca-btn {
@@ -206,10 +207,12 @@
 }
 
 .pca-btn--github {
-  background: rgba(255, 255, 255, 0.1);
+  /* background: rgba(255, 255, 255, 0.1); */
   color: #fff;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  backdrop-filter: blur(6px);
+  /* border: 1px solid rgba(255, 255, 255, 0.18); */
+  /* backdrop-filter: blur(6px); */
+  margin: 8px;
+  
 }
 
 .pca-btn--github:hover {

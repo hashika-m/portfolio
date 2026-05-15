@@ -1,8 +1,10 @@
 import '../styles/Projects.css';
-import socialApp from '../assets/img5.png';
-import movieApp from '../assets/img3.png';
-import shoppingApp from '../assets/img4.png';
-import invoiceApp from '../assets/img2.png'
+import socialApp from '../assets/social.jpg';
+import movieApp from '../assets/movie.jpg';
+import shoppingApp from '../assets/shop.jpg';
+import invoiceApp from '../assets/invoice.jpg'
+import recepie from '../assets/recepie.jpg'
+import income from '../assets/income1.png'
 
 const PROJECTS = [
   {
@@ -11,11 +13,9 @@ const PROJECTS = [
     tech: ['React', 'Node', 'Express', 'MongoDB', 'Tailwind CSS'],
     desc: 'A full-stack social media application built using the MERN stack, featuring secure user authentication, dynamic news feed, and real-time interactions. Users can create and manage posts, engage through comments, likes, and manage profiles.',
     category: 'Full Stack',
-    // icon: '💬',
-    // image: 'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=600&q=80',
-    image:socialApp,
-    // github: 'https://github.com/hashika-m',
-    // github:'https://github.com/hashika-m',
+    image: socialApp,
+    githubFE: 'https://github.com/hashika-m/social_media-fe',
+    githubBE: 'https://github.com/hashika-m/social_media-be',
     live: 'https://cerulean-tulumba-a25f72.netlify.app',
   },
   {
@@ -49,7 +49,8 @@ const PROJECTS = [
     desc: 'Built a dynamic expense tracker with add/delete features and automatic balance calculations using Local Storage for persistent data.',
     category: 'Vanilla JS',
     // icon: '💰',
-    image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&q=80',
+    // image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&q=80',
+    image: income,
     github: 'https://github.com/hashika-m/Income-Expense-Tracker',
     live: 'https://sensational-melba-9a25cd.netlify.app/',
   },
@@ -60,7 +61,8 @@ const PROJECTS = [
     desc: 'Implemented CRUD operations and backend logic to manage recipe data, making it ready for frontend integration.',
     category: 'Backend',
     // icon: '🍳',
-    image: 'https://images.unsplash.com/photo-1466637574441-749b8f19452f?w=600&q=80',
+    // image: 'https://images.unsplash.com/photo-1466637574441-749b8f19452f?w=600&q=80',
+    image:recepie,
     github: 'https://github.com/hashika-m/node-recipe_app',
     live: null,
   },
@@ -154,7 +156,7 @@ const Projects = () => (
               <div className="project-card__overlay">
                 <p className="project-card__overlay-desc">{project.desc}</p>
 
-                <div className="project-card__actions">
+                {/* <div className="project-card__actions">
                   {project.github && (
                     <a
                       href={project.github}
@@ -179,7 +181,36 @@ const Projects = () => (
                       <span>Live Demo</span>
                     </a>
                   )}
-                </div>
+                </div> */}
+
+                <div className="overlay__actions">
+                {/* Social Media: split FE + BE */}
+                {project.githubFE && (
+                  <a href={project.githubFE} target="_blank" rel="noreferrer"
+                    className="pca-btn pca-btn--github">
+                    <GitHubIcon /><span>Frontend</span>
+                  </a>
+                )}
+                {project.githubBE && (
+                  <a href={project.githubBE} target="_blank" rel="noreferrer"
+                    className="pca-btn pca-btn--github">
+                    <GitHubIcon /><span>Backend</span>
+                  </a>
+                )}
+                {/* All other projects */}
+                {project.github && (
+                  <a href={project.github} target="_blank" rel="noreferrer"
+                    className="pca-btn pca-btn--github">
+                    <GitHubIcon /><span>GitHub</span>
+                  </a>
+                )}
+                {project.live && (
+                  <a href={project.live} target="_blank" rel="noreferrer"
+                    className="pca-btn pca-btn--live">
+                    <LiveIcon /><span>Live Demo</span>
+                  </a>
+                )}
+              </div>
               </div>
             </div>
 
